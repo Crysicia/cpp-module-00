@@ -4,7 +4,6 @@ NAME	= phonebook
 OBJS	= $(SRCS:.cpp=.o)
 RM		= rm -f
 SRCS	= phonebook.cpp \
-		  contact.cpp \
 		  main.cpp
 
 all: $(NAME)
