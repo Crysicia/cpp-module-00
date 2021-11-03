@@ -2,6 +2,7 @@
 #include <string>
 #include "contact.hpp"
 
+
 int main()
 {
 	std::string input;
@@ -23,6 +24,11 @@ int main()
 		std::cout << "ADD, SEARCH, EXIT" << std::endl;
 		std::cin >> input;
 
+		if (std::cin.eof())
+		{
+			std::cout << "Please don't break my input" <<std::endl;
+			return 1;
+		}
 		if (!input.compare("ADD"))
 			std::cout << "ADD THINGS" << std::endl;
 		else if (!input.compare("SEARCH"))
