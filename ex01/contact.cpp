@@ -1,4 +1,5 @@
 #include "contact.hpp"
+#include <iostream>
 
 const std::string& Contact::getFirstName() const {
     return firstName;
@@ -17,3 +18,11 @@ void Contact::setLastName(const std::string& input) { lastName = input; }
 void Contact::setNickname(const std::string& input) { nickname = input; }
 void Contact::setPhoneNumber(const std::string& input) { phoneNumber = input; }
 void Contact::setDarkestSecret(const std::string& input) { darkestSecret = input; }
+
+void Contact::displayInfos() {
+    std::cout << "First name: " << firstName << std::endl
+              << "Last name: " << lastName << std::endl
+              << "Nickname: " << nickname << std::endl
+              << "Phone number: " << phoneNumber << std::endl
+              << "Darkest secret: " << darkestSecret << std::endl;
+}

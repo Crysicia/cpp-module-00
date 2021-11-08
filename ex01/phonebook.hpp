@@ -3,6 +3,7 @@
 
 #include "contact.hpp"
 #include <iostream>
+#include <string>
 
 class Phonebook
 {
@@ -13,10 +14,11 @@ public:
 
 private:
 	void addContact(Contact& contact);
-	void displayContact(size_t index);
-	void searchContacts(size_t index);
+	void displayContactTable(size_t index);
+	void searchContacts();
     std::string getInput(std::string display);
     std::string truncate(std::string string);
+    bool validIndex(std::string string);
 
 	size_t currentIndex;
     size_t numberOfContacts;

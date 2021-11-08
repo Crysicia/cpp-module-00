@@ -1,3 +1,5 @@
+#include <iostream>
+#include <string>
 #include "phonebook.hpp"
 
 Phonebook::Phonebook() : currentIndex(0), numberOfContacts(0) {}
@@ -12,23 +14,18 @@ void Phonebook::addMenu() {
     currentIndex = (currentIndex + 1) % 8;
     if (numberOfContacts < 8)
         numberOfContacts++;
-    Phonebook::searchMenu();
 }
 
 void Phonebook::searchMenu() {
     std::cout << "Index     |First name|Last name |Nickname  " << std::endl
               << "----------|----------|----------|----------" << std::endl;
     for (size_t i = 0; i < numberOfContacts; i++) {
-        Phonebook::displayContact(i);
+        Phonebook::displayContactTable(i);
     }
+    Phonebook::searchContacts();
 }
-//
-//
-//void Phonebook::addContact(Contact& contact) {
-//    contacts[currentIndex] = contact;
-//}
-//
-void Phonebook::displayContact(size_t index) {
+
+void Phonebook::displayContactTable(size_t index) {
     std::cout << index << std::string(9, ' ') << "|"
               << Phonebook::truncate(contacts[index].getFirstName()) << "|"
               << Phonebook::truncate(contacts[index].getLastName()) << "|"
@@ -37,14 +34,37 @@ void Phonebook::displayContact(size_t index) {
 
 std::string Phonebook::truncate(std::string string) {
     int length = string.length();
+
     if (length > 10)
         return string.substr(0, 9) + ".";
     return string + std::string(10 - length, ' ');
 }
-//
-//void Phonebook::searchContacts(size_t index) {
-//
-//}
+
+void Phonebook::searchContacts() {
+    std::string input;
+    
+    input = Phonebook::getInput("Contact to show (Index): ");
+    if (!Phonebook::validIndex(input))
+    {
+        std::cout << "Unknown contact index" << std::endl;
+        return ;
+    }
+    contacts[std::stoi(input)].displayInfos();
+}
+
+bool Phonebook::validIndex(std::string string) {
+    size_t index;
+    
+    if (string.empty())
+        return false;
+    for (int i = 0; string[i]; i++)
+        if (!std::isdigit(string[i]))
+            return false;
+    index = std::stoi(string);
+    if (index < 0 || index >= numberOfContacts)
+        return false;
+    return true;
+}
 
 std::string Phonebook::getInput(std::string display) {
     std::string input;
