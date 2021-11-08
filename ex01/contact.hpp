@@ -6,17 +6,17 @@
 class Contact
 {
 public:
-	const std::string& getFirstName() const { return firstName; }
-	const std::string& getLastName() const { return lastName; }
-	const std::string& getNickame() const { return nickname; }
-	const std::string& getPhoneNumber() const { return phoneNumber; }
-	const std::string& getDarkestSecret() const { return darkestSecret; }
+    const std::string& getFirstName() const;
+    const std::string& getLastName() const;
+    const std::string& getNickname() const;
+    const std::string& getPhoneNumber() const;
+    const std::string& getDarkestSecret() const;
 
-	void setFirstName(const std::string& input) { firstName = input; }
-	void setLastName(const std::string& input) { lastName = input; }
-	void setNickame(const std::string& input) { nickname = input; }
-	void setPhoneNumber(const std::string& input) { phoneNumber = input; }
-	void setDarkestSecret(const std::string& input) { darkestSecret = input; }
+    void setFirstName(const std::string&);
+    void setLastName(const std::string&);
+    void setNickname(const std::string&);
+    void setPhoneNumber(const std::string&);
+    void setDarkestSecret(const std::string&);
 
 private:
 	std::string firstName;
